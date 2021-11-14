@@ -4,7 +4,7 @@
 
 class Deck {
     constructor() {
-        this.cards = [];
+        this.cards =[];
     }
 
     populateCards() {
@@ -31,8 +31,6 @@ class Deck {
                 this.cards.push(card);
             }
         }
-
-        this.cards
     }
 
     describe() {
@@ -40,7 +38,8 @@ class Deck {
         for (let card of this.cards) {
             console.log(`${counter}) ${card.describe()}`);
             counter++;
-            //card.describe();
+            // debug code:
+            //      card.describe();
         }
     }
 
@@ -49,7 +48,7 @@ class Deck {
 
 
 class Card {
-    constructor(suit,value,description, representation) {
+    constructor(suit, value, description, representation) {
         this.suit = suit;
         this.value = value;
         this.description = description;
@@ -57,7 +56,8 @@ class Card {
     }
 
     describe() {
-        //console.log(`The ${this.description} has a value of ${this.value}`);
+        // debug code:
+        //      console.log(`The ${this.description} has a value of ${this.value}`);
         return(`the ${this.description} has a value of ${this.value} ${this.representation}`);
     }
 
@@ -77,8 +77,9 @@ class Player {
 
     describe() {
         //  do I want to return this, or console.log this??
-        // console.log(`Player ${this.name} has a score of ${this.score}`);
-        return `Player: ${this.name} has a score of ${this.score}`;
+        // debug code:
+        //      console.log(`Player ${this.name} has a score of ${this.score}`);
+        return `\t${this.name} has a score of ${this.score}`;
     }
 
     flip() {
@@ -106,14 +107,25 @@ console.log("\n------------------------------------\n");
 console.log("     SORTED DECK ");
 console.log("------------------------------------\n");
 deck.cards.sort((a,b) => 0.5 - Math.random());
-//deck.describe();
+// debug code:
+//      deck.describe();
 console.log(`Deck has ${deck.cards.length} cards!`);
 
 
-// I'd like to prompt the user for the names???
-let player1 = new Player(prompt("The name for Player 1 is: ", "Player 1"));
-let player2 = new Player(prompt("The name for Player 2 is: ", "Player 2"));
+//  Prompt for userNames, and set to defaults if not provided!
+let player1Name = prompt("The name for Player 1 is: ", "Player 1");
+if (player1Name == null) {
+    player1Name = "Player 1";
+}
 
+let player2Name = prompt("The name for Player 2 is: ", "Player 2");
+if (player2Name == null) {
+    player2Name = "Player 2";
+}
+
+let player1 = new Player(player1Name);
+let player2 = new Player(player2Name);
+console.log(`The game is starting with ${player1Name} and ${player2Name}`);
 
 // deal the deck to both players
 for (let index = 0; index < 26; index++) {
@@ -146,9 +158,9 @@ for (let index = 0; index < 26; index++) {
     let player1Card = player1.flip();
     let player2Card = player2.flip();
 
-   
-    console.log(player1Card);
-    console.log(player2Card);
+    // debug code:  
+    //      console.log(player1Card);
+    //      console.log(player2Card);
     var win;
     // Compare the value
     // increment the score of the card with the highest value
@@ -160,7 +172,8 @@ for (let index = 0; index < 26; index++) {
         win = `Point goes to ${player2.name}!`;
     } else {
         win = `No score -- cards are equal!`;
-        console.log('No score -- cards are equal!');
+        // debug code:
+        //      console.log('No score -- cards are equal!');
     }
     alert(`
     ${player1.name} has ${player1Card.describe()} 
@@ -179,6 +192,12 @@ if (player1.score > player2.score) {
     var winner = `This GAME OF WAR is a draw!`;
 }
 
+console.log(`--------------------------------------------
+The game has ended.
+\t${player1.describe()}
+\t${player2.describe()}
+The game has ended.  ${winner}
+--------------------------------------------`);
 
 // END OF GAME
 
