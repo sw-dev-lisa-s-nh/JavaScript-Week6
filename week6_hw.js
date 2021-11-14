@@ -11,11 +11,23 @@ class Deck {
         var suits = ["Hearts", "Spades", "Diamonds", "Clubs"];
         var values = [2,3,4,5,6,7,8,9,10,11,12,13,14];
         var descriptions = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"];
-        var value = 0;
-        var description = "";
         for (let suit of suits) {
+            var representation = '';
+            const blackHeart = '\u2665';
+            const blackspade = '\u2660';
+            const blackclub = '\u2663';
+            const blackdiamond = '\u2666';
+            if (suit == "Hearts") {
+                representation = blackHeart;
+            } else if  (suit == "Spades") {
+                representation = blackspade;
+            } else if  (suit == "Diamonds") {
+                representation = blackdiamond;
+            } else if  (suit == "Clubs") {
+                representation = blackclub;
+            }
             for (let index = 0; index < values.length; index++) {
-                let card = new Card(suit, values[index], `${descriptions[index]} of ${suit}`);
+                let card = new Card(suit, values[index], `${descriptions[index]} of ${suit}`, representation);
                 this.cards.push(card);
             }
         }
@@ -37,15 +49,16 @@ class Deck {
 
 
 class Card {
-    constructor(suit,value,description) {
+    constructor(suit,value,description, representation) {
         this.suit = suit;
         this.value = value;
         this.description = description;
+        this.representation = representation;
     }
 
     describe() {
         //console.log(`The ${this.description} has a value of ${this.value}`);
-        return(`the ${this.description} has a value of ${this.value}`);
+        return(`the ${this.description} has a value of ${this.value} ${this.representation}`);
     }
 
    
