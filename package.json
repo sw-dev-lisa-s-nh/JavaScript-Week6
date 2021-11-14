@@ -1,0 +1,29 @@
+{
+  "name": "javascript-week6",
+  "version": "1.0.0",
+  "description": "\"JavaScript Week6 Coding Assignment\"",
+  "main": "week6_hw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sw-dev-lisa-s-nh/JavaScript-Week6.git"
+  },
+  "keywords": [
+    "Mocha",
+    "Chai",
+    "UnitTesting",
+    "JavaScript"
+  ],
+  "author": "Lisa Maatta Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sw-dev-lisa-s-nh/JavaScript-Week6/issues"
+  },
+  "homepage": "https://github.com/sw-dev-lisa-s-nh/JavaScript-Week6#readme",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3"
+  }
+}

@@ -39,3 +39,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### CHAI & MOCHA ###
+node_modules
