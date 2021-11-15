@@ -4,10 +4,11 @@
 
 class Deck {
     constructor() {
-        this.cards =[];
+        this.cards = [];
     }
 
     populateCards() {
+        var newDeck = []
         var suits = ["Hearts", "Spades", "Diamonds", "Clubs"];
         var values = [2,3,4,5,6,7,8,9,10,11,12,13,14];
         var descriptions = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"];
@@ -28,9 +29,10 @@ class Deck {
             }
             for (let index = 0; index < values.length; index++) {
                 let card = new Card(suit, values[index], `${descriptions[index]} of ${suit}`, representation);
-                this.cards.push(card);
+                newDeck.push(card);
             }
         }
+        return newDeck;
     }
 
     describe() {
@@ -102,7 +104,7 @@ class Player {
 // START OF GAME
 // Populate a Deck with 52 cards and then sort them.
 let deck = new Deck();
-deck.populateCards();
+deck.cards = deck.populateCards();
 console.log("\n------------------------------------\n");
 console.log("     SORTED DECK ");
 console.log("------------------------------------\n");
@@ -175,13 +177,13 @@ for (let index = 0; index < 26; index++) {
         // debug code:
         //      console.log('No score -- cards are equal!');
     }
-    alert(`
+    console.log(`
     ${player1.name} has ${player1Card.describe()} 
                 VS. 
         ${player2.name} has ${player2Card.describe()}
     ---------------------------------------------------------
             ${win}
-    `)
+    `);
 }
 
 if (player1.score > player2.score) {
