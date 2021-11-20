@@ -1,5 +1,7 @@
 // imports the chai expect method
 var expect = chai.expect;
+var should = chai.should;
+var assert = chai.assert;
 
 // takes a "name", and a function that sets up the test
 describe('LisasWeek6Functions', function() {
@@ -54,12 +56,12 @@ describe('LisasWeek6Functions', function() {
             expect(diamondCount).to.equals(13);
         });
 
-        // it('should throw an error if first parameter is not a string', function() {
-        //     // wrapped in an expect, because we expect it to throw an error
-        //     expect(function() {
-        //         populateCards();
-        //     }).to.throw(Error);
-        // });
+        it('should throw an error if Player(1234).getName does not return a String', function() {
+            expect(function() {
+                const newPlayer = new Player(1234);
+                assert.typeOf(newPlayer.getName(),'string');
+            }).to.throw(Error);
+        });
     });
 
 });
